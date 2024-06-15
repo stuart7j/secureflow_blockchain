@@ -20,7 +20,7 @@ const convertInputRecord = (record) => {
 
     const convertedRecord = {
         details: prescriptionStr,
-        refID: record._id
+        refID: record.id
     };
 
     return convertedRecord;
