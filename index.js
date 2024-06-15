@@ -6,7 +6,7 @@ const contractAddress = process.env.CONTRACT_ADDRESS;
 
 const provider = new ethers.providers.JsonRpcProvider(API_URL);
 const signer = new ethers.Wallet(PRIVATE_KEY, provider);
-const { abi } = require("./artifacts/contracts/blochealth.sol/PrescriptionContract.json");
+const { abi } = require("./artifacts/contracts/Prescription.sol/Prescription.json");
 const contractInstance = new ethers.Contract(contractAddress, abi, signer);
 
 const express = require('express');
