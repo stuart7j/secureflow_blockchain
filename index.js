@@ -13,10 +13,30 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 
+
+// Function to convert input data to the expected format
+const convertInputRecord = (record) => {
+    const prescriptionStr = JSON.stringify(record);
+
+    const convertedRecord = {
+        details: prescriptionStr,
+        refID: record._id
+    };
+
+    return convertedRecord;
+};
+
+// Function to convert output data back to the original format
+const revertRecord = (record) => {
+    const prescriptionObj = JSON.parse(record);
+
+    return prescriptionObj;
+};
+
 app.post('/addPrescription', async (req, res) => {
     try{
-        const record = req.body;
-        const {details, refID} = record;
+        const convertedRecord = convertInputRecord(req.body);
+        const {details, refID} = convertedRecord;
         const tx = await contractInstance.addPrescription(details, refID);
         await tx.wait();
         res.send("Added successfully");
@@ -29,7 +49,14 @@ app.post('/addPrescription', async (req, res) => {
 app.get('/getAllPrescription', async (req, res) => {
     try {
         const prescription = await contractInstance.getAllPrescription();
-        res.send(prescription);
+        // const records = allRecords.map(record => ({
+        //res.send(prescription);
+        const records = prescription.map(record => ({
+            details: record[0],
+            refID: parseInt(record[1])
+        }));
+        console.log(records);
+        res.send(records.map(revertRecord));
     }
     catch (error) {
         res.status(500).send(error.message);
@@ -37,5 +64,5 @@ app.get('/getAllPrescription', async (req, res) => {
 });
 
 app.listen(8029, () => {
-    console.log('Server running on port 3000');
+    console.log('Server running on port 8029');
 });
