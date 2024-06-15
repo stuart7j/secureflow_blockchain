@@ -46,7 +46,7 @@ app.post('/addPrescription', async (req, res) => {
     }
 });
 
-app.get('/getAllPrescription', async (req, res) => {
+app.get('/getAllPrescriptions', async (req, res) => {
     try {
         const prescription = await contractInstance.getAllPrescription();
         // const records = allRecords.map(record => ({
