@@ -28,10 +28,9 @@ const convertInputRecord = (record) => {
 
 // Function to convert output data back to the original format
 const revertRecord = (record) => {
-    // const prescriptionObj = JSON.parse(record);
+    const prescriptionObj = JSON.parse(record.details);
 
-    // return prescriptionObj;
-    return record;
+    return prescriptionObj;
 };
 
 app.post('/addPrescription', async (req, res) => {
