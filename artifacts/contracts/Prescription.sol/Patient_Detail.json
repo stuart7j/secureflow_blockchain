@@ -1,0 +1,85 @@
+{
+    "abi1": [
+      {
+        "inputs": [
+          {
+            "internalType": "string",
+            "name": "details",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "refID",
+            "type": "uint256"
+          }
+        ],
+        "name": "addPatientDetail",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "refID",
+            "type": "uint256"
+          }
+        ],
+        "name": "deletePatientDetail",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "getAllPatientDetails",
+        "outputs": [
+          {
+            "components": [
+              {
+                "internalType": "string",
+                "name": "details",
+                "type": "string"
+              },
+              {
+                "internalType": "uint256",
+                "name": "refID",
+                "type": "uint256"
+              }
+            ],
+            "internalType": "struct Patient_Detail.PatientDetail[]",
+            "name": "",
+            "type": "tuple[]"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint256",
+            "name": "refID",
+            "type": "uint256"
+          }
+        ],
+        "name": "getPatientDetailRecord",
+        "outputs": [
+          {
+            "internalType": "string",
+            "name": "",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+      }
+    ]
+  }
+  
